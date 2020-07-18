@@ -15,29 +15,30 @@ whotest[0]='test' || (echo 'Failure: arrays not supported in your version of bas
 #############################################################################
 
 settings=(
-    LOGOSMALL
-#    LOGOBIG
+#   LOGOSMALL
+#   LOGOBIG
     SYSTEM
     DATE
     UPTIME
     MEMORY
     DISKS
     LOADAVERAGE
-    PROCESSES
+#   PROCESSES
     IP
     # Please be aware UPDATES command may take a few seconds to run
     # If you don't like waiting, just comment it out
-    UPDATES
-    WEATHER
+#   UPDATES
+#   WEATHER
     CPUTEMP
     GPUTEMP
-    SSHLOGINS
-    LASTLOGIN
-    MESSAGES
+#   SSHLOGINS
+#   LASTLOGIN
+#   MESSAGES
 )
 
 # Accuweather location codes: https://github.com/SixBytesUnder/custom-motd/blob/master/accuweather_location_codes.txt
-weatherCode="EUR|UK|UK001|LONDON|"
+# weatherCode="EUR|UK|UK001|LONDON|"
+weatherCode="EUR|ES|SP013|MADRID"
 
 # Show temperatures in "C" for Celsius or "F" for Fahrenheit
 degrees=C
