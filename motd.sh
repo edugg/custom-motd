@@ -18,6 +18,7 @@ settings=(
 #   LOGOSMALL
 #   LOGOBIG
     SYSTEM
+    HARDWARE
     DATE
     UPTIME
     MEMORY
@@ -109,6 +110,9 @@ function metrics {
         ;;
     'SYSTEM')
         displayMessage 'System.............:' "$(uname -snrmo)"
+        ;;
+    'HARDWARE')
+        displayMessage 'Hardware...........:' "$(cat /proc/cpuinfo | grep Model  | sed -e 's/^.*: //g')"
         ;;
     'DATE')
         displayMessage 'Date...............:' "$(date +"%A, %e %B %Y, %r")"
