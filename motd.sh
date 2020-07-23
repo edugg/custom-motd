@@ -112,7 +112,7 @@ function metrics {
         displayMessage 'System.............:' "$(uname -snrmo)"
         ;;
     'MODEL')
-        displayMessage 'Hardware...........:' "$(cat /proc/cpuinfo | grep Model  | sed -e 's/^.*: //g')"
+        displayMessage 'Model..............:' "$(cat /proc/cpuinfo | grep Model  | sed -e 's/^.*: //g')"
         ;;
     'DATE')
         displayMessage 'Date...............:' "$(date +"%A, %e %B %Y, %r")"
