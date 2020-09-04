@@ -115,7 +115,7 @@ function metrics {
         displayMessage 'Model..............:' "$(cat /proc/cpuinfo | grep Model  | sed -e 's/^.*: //g')"
         ;;
     'DATE')
-        displayMessage 'Date...............:' "$(date +"%A, %e %B %Y, %r")"
+        displayMessage 'Date...............:' "$(date +"%A, %e %B %Y, %R")"
         ;;
     'UPTIME')
         let upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
@@ -139,7 +139,7 @@ function metrics {
         displayMessage 'Running processes..:' "$(ps ax | wc -l | tr -d " ")"
         ;;
     'IP')
-        lip=$(/sbin/ifconfig eth0 | /bin/grep "inet addr" | /usr/bin/cut -d ":" -f 2 | /usr/bin/cut -d " " -f 1)
+        lip=$(ip -o -4 add s | grep  -E "( eth| wlan)" | awk '{print $4}' | cut -d "/" -f 1 | xargs echo | sed -e 's/ /\, /g')
         eip=$(wget -q -O - http://icanhazip.com/ | tail)
         if [ "$lip" ]; then
             localIP="local: ${lip}"
