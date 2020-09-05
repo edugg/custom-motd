@@ -177,7 +177,12 @@ function metrics {
         displayMessage 'CPU temperature....:' "${cpu}°$degrees"
         ;;
     'GPUTEMP')
-        gpu=$(/opt/vc/bin/vcgencmd measure_temp | awk -F "[=']" '{print $2}')
+        if [ "$HOSTTYPE" == "aarch64" ]; then
+            vcgpath='/usr/bin'
+        else
+            vcgpath='/opt/vc/bin'
+        fi
+        gpu=$(${vcgpath}/vcgencmd measure_temp | awk -F "[=']" '{print $2}')
         if [ "$degrees" == "F" ]; then
             gpu=$(echo "1.8 $gpu 32" | awk '{printf "%.2f\n", $1*$2+$3}')
         fi
